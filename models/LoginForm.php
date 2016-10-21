@@ -53,6 +53,15 @@ class LoginForm extends Model
         }
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Имя',
+            'password' => 'Пароль',
+            'rememberMe' => 'Запомнить меня'
+        ];
+    }
+
     /**
      * Logs in a user using the provided username and password.
      * @return bool whether the user is logged in successfully

@@ -26,43 +26,53 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
+
+    //Navbar begin here----------------------------------------------------------------------------------------
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => '<span class="glyphicon glyphicon-leaf"></span> Мой блог',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar navbar-default navbar-fixed-top',
         ],
     ]);
     echo Nav::widget([
+        'encodeLabels' => false,
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
 
+            [
+                'label' => '<span class="glyphicon glyphicon-home"></span> Главная',
+                'url' => ['/site/index']
+            ],
+            ['label' => '<span class ="glyphicon glyphicon-info-sign"></span> О блоге', 'url' => ['/site/about']],
+//            ['label' => 'Связаться со мной', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 [
-                    'label' => 'Login',
+                    'label' => '<span class="glyphicon glyphicon-sunglasses"></span> Панель администратора',
                     'url' => ['/site/login']]
             ) : (
-
 //            ['label' => Yii::$app->user->identity->username, 'items' => [
-            ['label' => 'Панель Администратора', 'items' => [
-                ['label' => 'Категории', 'url' => ['/admin/category']],
-                ['label' => 'Статьи', 'url' => ['/admin/post']],
-                ['label' => 'Комментарии', 'url' => ['/admin/comment']],
+            ['label' => '<span class="glyphicon glyphicon-sunglasses"></span> Панель Администратора', 'items' => [
+                ['label' => '<span class="glyphicon glyphicon-star-empty"></span> Категории', 'url' => ['/admin/category']],
+                ['label' => '<span class="glyphicon glyphicon-pencil"></span> Статьи', 'url' => ['/admin/post']],
+                ['label' => '<span class="glyphicon glyphicon-send"></span> Комментарии', 'url' => ['/admin/comment']],
                 [
-                    'label' => 'Выйти',
+                    'label' => '<span class="glyphicon glyphicon-remove-circle"></span> Выйти',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']]
-            ]
-            ]
-
+            ]]
             )
         ],
     ]);
     NavBar::end();
+    //Navbar end here----------------------------------------------------------------------------------------
     ?>
+
+
+
+
+
+
 
     <div class="container">
         <?= Breadcrumbs::widget([
@@ -72,11 +82,18 @@ AppAsset::register($this);
     </div>
 </div>
 
+
+
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">
+            <em><strong><span class="label label-default">Рустам Асылгареев</span></strong></em><br>
+            <em>Email: </em><a href="mailto:#">rustamasylgareev@gmail.com</a>
+        </p>
+        <p class="pull-right">
+            &copy; Мой блог <?= date('Y') ?>
+        </p>
     </div>
 </footer>
 
