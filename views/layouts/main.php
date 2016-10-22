@@ -45,6 +45,8 @@ AppAsset::register($this);
                 'url' => ['/site/index']
             ],
             ['label' => '<span class ="glyphicon glyphicon-info-sign"></span> О блоге', 'url' => ['/site/about']],
+            ['label' => '<span class ="glyphicon glyphicon-wrench"></span> Конструкция сайта', 'url' => ['/site/construction']],
+
 //            ['label' => 'Связаться со мной', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 [
@@ -53,7 +55,7 @@ AppAsset::register($this);
             ) : (
 //            ['label' => Yii::$app->user->identity->username, 'items' => [
             ['label' => '<span class="glyphicon glyphicon-sunglasses"></span> Панель Администратора', 'items' => [
-                ['label' => '<span class="glyphicon glyphicon-star-empty"></span> Категории', 'url' => ['/admin/category']],
+                ['label' => '<span class="glyphicon glyphicon-book"></span> Категории', 'url' => ['/admin/category']],
                 ['label' => '<span class="glyphicon glyphicon-pencil"></span> Статьи', 'url' => ['/admin/post']],
                 ['label' => '<span class="glyphicon glyphicon-send"></span> Комментарии', 'url' => ['/admin/comment']],
                 [
@@ -88,11 +90,13 @@ AppAsset::register($this);
     <div class="container">
 
         <p class="pull-left">
-            <em><strong><span class="label label-default">Рустам Асылгареев</span></strong></em><br>
-            <em>Email: </em><a href="mailto:#">rustamasylgareev@gmail.com</a>
+            <em><strong><span class="label label-warning">Рустам Асылгареев</span></strong></em><br>
+            <strong><em><span class="label label-warning">Email: <a href="mailto:rustamasylgareev@gmail.com">rustamasylgareev@gmail.com</span></a></em></strong><br>
         </p>
+
         <p class="pull-right">
-            &copy; Мой блог <?= date('Y') ?>
+            <em><strong><span class="label label-warning">&copy; Мой блог <?= date('Y') ?></span></strong></em><br>
+            <small> <em><strong><span class="label label-warning"><?= Yii::powered() ?></span></strong></em></small>
         </p>
     </div>
 </footer>

@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\db\ActiveRecord;
 /**
  * This is the model class for table "{{%category}}".
  *
@@ -11,7 +11,7 @@ use Yii;
  * @property string $name
  * @property string $description
  */
-class Category extends \yii\db\ActiveRecord
+class Category extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -28,7 +28,8 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name', 'description'], 'string', 'max' => 255],
+            [['name'], 'string', 'max' => 255],
+            [['description'], 'string'],
             [['name'], 'unique'],
         ];
     }
@@ -44,4 +45,17 @@ class Category extends \yii\db\ActiveRecord
             'description' => 'Описание',
         ];
     }
+
+    public function getPosts()
+    {
+        return $this->hasMany(Post::className(), ['category_id' => 'id']);
+
+    }
+    
 }
+    
+//    public function getComments(){
+//        return $this->hasMany(Comment::className(), ['comment_product' => 'id']);//comment_product - ключ,  id - value
+//
+//        //comment_product комментария = id продукта
+//  }

@@ -2,12 +2,15 @@
 
 namespace app\controllers;
 
+use app\models\Category;
+use app\models\Post;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\web\HttpException;
 
 class SiteController extends Controller
 {
@@ -61,7 +64,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+//        $query = Category::find()->select('id, name, description')->orderBy('id DESC');
+//        $categories = $query->all();
+//        return $this->render('index', compact('categories'));
+
+        $categories = Category::find()->with('posts')->all();
+        return $this->render('index', compact('categories'));
+        
+
     }
 
     /**
@@ -122,5 +132,21 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public  function  actionConstruction()
+    {
+        return $this->render('construction');
+    }
+
+    public function actionPost(){
+
+        $id = Yii::$app->request->get('id');
+        $post = Post::findOne($id);
+        
+        if(empty($post)) throw new HttpException(404, 'Такой страницы нет.');
+
+        return $this->render('post', compact('id', 'post'));
+
     }
 }
