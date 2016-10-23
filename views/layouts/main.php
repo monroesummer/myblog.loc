@@ -45,7 +45,7 @@ AppAsset::register($this);
                 'url' => ['/site/index']
             ],
             [
-                'label' => '<span class="glyphicon glyphicon-bookmark"></span> Категории</em>',
+                'label' => '<span class="glyphicon glyphicon-bookmark"></span> Статьи</em>',
                 'url' => ['/site/category']
             ],
             [

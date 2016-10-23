@@ -1,6 +1,6 @@
 <?php
 $this->title = $post->title;
-
+$this->params['breadcrumbs'][] = ['label' => 'Статьи', 'url' => ['category']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
