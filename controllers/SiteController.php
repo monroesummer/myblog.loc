@@ -64,13 +64,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-//        $query = Category::find()->select('id, name, description')->orderBy('id DESC');
-//        $categories = $query->all();
-//        return $this->render('index', compact('categories'));
+
+        return $this->render('index');
+
+    }
+
+    public function actionCategory()
+    {
 
         $categories = Category::find()->with('posts')->all();
-        return $this->render('index', compact('categories'));
-        
+        return $this->render('category', compact('categories'));
 
     }
 
@@ -141,7 +144,7 @@ class SiteController extends Controller
 
     public function actionPost(){
 
-        $id = Yii::$app->request->get('id');
+        $id = \Yii::$app->request->get('id');
         $post = Post::findOne($id);
         
         if(empty($post)) throw new HttpException(404, 'Такой страницы нет.');
