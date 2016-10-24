@@ -44,14 +44,22 @@ AppAsset::register($this);
                 'label' => '<span class="glyphicon glyphicon-home"></span> Главная</em>',
                 'url' => ['/site/index']
             ],
+
             [
                 'label' => '<span class="glyphicon glyphicon-bookmark"></span> Статьи</em>',
                 'url' => ['/site/category']
             ],
+
             [
                 'label' => '<span class ="glyphicon glyphicon-info-sign"></span> О блоге</em>',
                 'url' => ['/site/about']
             ],
+
+            [
+                'label' => '<span class ="glyphicon glyphicon-hdd"></span> RESTful Web Service</em>',
+                'url' => ['/site/restful']
+            ],
+
             [
                 'label' => '<span class ="glyphicon glyphicon-wrench"></span> Конструкция сайта</em>',
                 'url' => ['/site/construction']
@@ -60,7 +68,7 @@ AppAsset::register($this);
 //            ['label' => 'Связаться со мной', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 [
-                    'label' => '<em><span class="label label-success"><span class="glyphicon glyphicon-sunglasses"></span> Панель администратора</span></em>',
+                    'label' => '<em><span class="glyphicon glyphicon-sunglasses"></span> Панель администратора</em>',
                     'url' => ['/site/login']]
             ) : (
 //            ['label' => Yii::$app->user->identity->username, 'items' => [

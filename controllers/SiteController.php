@@ -152,4 +152,7 @@ class SiteController extends Controller
         return $this->render('post', compact('id', 'post'));
 
     }
+    public function actionRestful(){
+        return $this->render('restful');
+    }
 }
