@@ -21,15 +21,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email') ?>
 
-    <?= $form->field($model, 'url') ?>
-
     <?= $form->field($model, 'content') ?>
-
-    <?php // echo $form->field($model, 'status') ?>
+    
+    <?= $form->field($model, 'comment_post') ?>
+    
+    <?= $form->field($model, 'status') ?>
+    
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Сброс', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

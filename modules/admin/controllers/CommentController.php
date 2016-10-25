@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Post;
 use Yii;
 use app\models\Comment;
 use app\models\CommentSearch;
@@ -70,6 +71,7 @@ class CommentController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'post' => Post::find()->all()
             ]);
         }
     }
@@ -89,6 +91,7 @@ class CommentController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'post' => Post::find()->all()
             ]);
         }
     }

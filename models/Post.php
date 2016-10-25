@@ -36,7 +36,7 @@ class Post extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content', 'category_id', 'status'], 'required'],
+            [['title', 'content', 'category_id',   'status'], 'required'],
             [['content'], 'string'],
             [['category_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 255],
@@ -76,7 +76,15 @@ class Post extends \yii\db\ActiveRecord
 
     public function getCategory()
     {
-        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+        return $this->hasOne(Category::className(), ['id' => 'category_id']); 
     }
+    
+    public function getComments(){
+        return $this->hasMany(Comment::className(), ['comment_post' => 'id']);//comment_product - ключ,  id - value
+        //comment_product комментария = id продукта
+    }
+
+
+
 
 }

@@ -41,43 +41,43 @@ AppAsset::register($this);
         'items' => [
 
             [
-                'label' => '<span class="glyphicon glyphicon-home"></span> Главная</em>',
+                'label' => '<span class="glyphicon glyphicon-home"></span> Главная',
                 'url' => ['/site/index']
             ],
 
             [
-                'label' => '<span class="glyphicon glyphicon-bookmark"></span> Статьи</em>',
+                'label' => '<span class="glyphicon glyphicon-bookmark"></span> Статьи',
                 'url' => ['/site/category']
             ],
 
             [
-                'label' => '<span class ="glyphicon glyphicon-info-sign"></span> О блоге</em>',
+                'label' => '<span class ="glyphicon glyphicon-info-sign"></span> О блоге',
                 'url' => ['/site/about']
             ],
 
             [
-                'label' => '<span class ="glyphicon glyphicon-hdd"></span> RESTful Web Service</em>',
+                'label' => '<span class ="glyphicon glyphicon-hdd"></span> RESTful Web Service',
                 'url' => ['/site/restful']
             ],
 
             [
-                'label' => '<span class ="glyphicon glyphicon-wrench"></span> Конструкция сайта</em>',
+                'label' => '<span class ="glyphicon glyphicon-wrench"></span> Конструкция сайта',
                 'url' => ['/site/construction']
             ],
 
 //            ['label' => 'Связаться со мной', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 [
-                    'label' => '<em><span class="glyphicon glyphicon-sunglasses"></span> Панель администратора</em>',
+                    'label' => '<em><span class="glyphicon glyphicon-sunglasses"></span> Панель администратора',
                     'url' => ['/site/login']]
             ) : (
 //            ['label' => Yii::$app->user->identity->username, 'items' => [
             ['label' => '<span class="glyphicon glyphicon-sunglasses"></span> Панель Администратора', 'items' => [
-                ['label' => '<span class="glyphicon glyphicon-book"></span> Категории</em>', 'url' => ['/admin/category']],
-                ['label' => '<span class="glyphicon glyphicon-pencil"></span> Статьи</em>', 'url' => ['/admin/post']],
-                ['label' => '<span class="glyphicon glyphicon-send"></span> Комментарии</em>', 'url' => ['/admin/comment']],
+                ['label' => '<span class="glyphicon glyphicon-book"></span> Категории', 'url' => ['/admin/category']],
+                ['label' => '<span class="glyphicon glyphicon-pencil"></span> Статьи', 'url' => ['/admin/post']],
+                ['label' => '<span class="glyphicon glyphicon-send"></span> Комментарии', 'url' => ['/admin/comment']],
                 [
-                    'label' => '<span class="glyphicon glyphicon-remove-circle"></span> Выйти</em>',
+                    'label' => '<span class="glyphicon glyphicon-remove-circle"></span> Выйти',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']]
             ]]
@@ -112,7 +112,7 @@ AppAsset::register($this);
                 <strong>
                     <span class="label label-success">Rustam Asylgareev Development</span>
                     <span class="label label-success"><abbr title="Phone">P:</abbr> 8 (917) 281-4527</span>
-                    <span class="label label-success">Vk.com: <a href="https://vk.com/maxkruse">https://vk.com/maxkruse</a></span>
+                    <span class="label label-success">Vk.com: <a href="https://vk.com/maxkruse" target="_blank">https://vk.com/maxkruse</a></span>
                 </strong>
             </em>
             <br>
@@ -120,7 +120,7 @@ AppAsset::register($this);
             <strong>
                 <em>
                     <span class="label label-success">Email: <a href="mailto:rustamasylgareev@gmail.com">rustamasylgareev@gmail.com</a></span>
-                    <span class="label label-success">Github: <a href="https://github.com/monroesummer">https://github.com/monroesummer</a></span>
+                    <span class="label label-success">Github: <a href="https://github.com/monroesummer" target="_blank">https://github.com/monroesummer</a></span>
                 </em>
             </strong>
             <br>

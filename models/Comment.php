@@ -10,45 +10,49 @@ use Yii;
  * @property integer $id
  * @property string $author
  * @property string $email
- * @property string $url
  * @property string $content
  * @property integer $status
  */
 class Comment extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
+
+    
     public static function tableName()
     {
         return '{{%comment}}';
     }
 
-    /**
-     * @inheritdoc
-     */
+
+    
+    
     public function rules()
     {
         return [
-            [['author', 'email', 'url', 'content', 'status'], 'required'],
+            [['author', 'email', 'content', 'comment_post', 'status'], 'required'],
             [['content'], 'string'],
-            [['status'], 'integer'],
-            [['author', 'email', 'url'], 'string', 'max' => 255],
+            [['status','comment_post'], 'integer'],
+            [['author', 'email'], 'string', 'max' => 255],
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
+ 
+    
+    
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'author' => 'Author',
+            'author' => 'Автор',
             'email' => 'Email',
-            'url' => 'Url',
-            'content' => 'Content',
-            'status' => 'Status',
+            'content' => 'Текст',
+            'comment_post' => 'Заголовок',
+            'status' => 'Статус',
         ];
     }
+
+    public function getPost()
+    {
+        return $this->hasOne(Post::className(), ['id' => 'comment_post']); //id - ключ. comment_post - значения.
+    }
+
 }

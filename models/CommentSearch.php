@@ -19,7 +19,7 @@ class CommentSearch extends Comment
     {
         return [
             [['id', 'status'], 'integer'],
-            [['author', 'email', 'url', 'content'], 'safe'],
+            [['author', 'email', 'content', 'comment_post'], 'safe'],
         ];
     }
 
@@ -65,8 +65,8 @@ class CommentSearch extends Comment
 
         $query->andFilterWhere(['like', 'author', $this->author])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'url', $this->url])
-            ->andFilterWhere(['like', 'content', $this->content]);
+            ->andFilterWhere(['like', 'content', $this->content])
+            ->andFilterWhere(['like', 'comment_post', $this->comment_post]);;
 
         return $dataProvider;
     }

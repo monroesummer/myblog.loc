@@ -69,19 +69,7 @@ class SiteController extends Controller
 
     }
 
-    public function actionCategory()
-    {
-
-        $categories = Category::find()->with('posts')->all();
-        return $this->render('category', compact('categories'));
-
-    }
-
-    /**
-     * Login action.
-     *
-     * @return string
-     */
+    
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -97,11 +85,7 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * Logout action.
-     *
-     * @return string
-     */
+
     public function actionLogout()
     {
         Yii::$app->user->logout();
@@ -109,11 +93,7 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return string
-     */
+
     public function actionContact()
     {
         $model = new ContactForm();
@@ -126,12 +106,7 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
+    
     public function actionAbout()
     {
         return $this->render('about');
@@ -142,16 +117,28 @@ class SiteController extends Controller
         return $this->render('construction');
     }
 
+    public function actionCategory()
+    {
+
+        $categories = Category::find()->with('posts')->all();
+        return $this->render('category', compact('categories'));
+
+    }
+
     public function actionPost(){
 
         $id = \Yii::$app->request->get('id');
+        
         $post = Post::findOne($id);
         
         if(empty($post)) throw new HttpException(404, 'Такой страницы нет.');
 
+        
         return $this->render('post', compact('id', 'post'));
 
     }
+    
+    
     public function actionRestful(){
         return $this->render('restful');
     }
