@@ -28,12 +28,22 @@ $comments  = $post->comments;
 
 <?php foreach ($comments as $comment): ?>
     <div class="panel panel-success">
-        <div class="panel-heading"> <?= 'Имя: ' . $comment->author?><br><?= 'Email: ' . $comment->email?></div>
+        <div class="panel-heading">
+            <?= 'Имя: ' . $comment->author?>
+            <br>
+            <?= 'Email: ' . $comment->email?>
+            <br>
+            <?='Дата: '. \Yii::$app->formatter->asDatetime($comment->created_at) ?>
+
+
+        </div>
         <div class="panel-body">
             <?='Комментарий: ' . '<br>' ?>
             <div class="well well-sm">
                 <?=$comment->content ?>
+
             </div>
+
         </div>
     </div>
     <hr>

@@ -10,6 +10,14 @@ $config = [
     'language' => 'ru-RU',
     'components' => [
 
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'php:d.m.Y',
+            'datetimeFormat' => 'php:j F, H:i',
+            'timeFormat' => 'php:H:i:s',
+            'defaultTimeZone' => 'Europe/Moscow',
+            'locale' => 'ru-RU'
+        ],
 
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
