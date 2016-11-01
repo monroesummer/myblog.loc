@@ -115,6 +115,11 @@ class SiteController extends Controller
 
     public  function  actionConstruction()
     {
+        $redirectUrl = '/web/';
+        if (Yii::$app->user->isGuest)
+        {
+            return Yii::$app->getResponse()->redirect($redirectUrl);
+        }
         return $this->render('construction');
     }
 
@@ -154,6 +159,11 @@ class SiteController extends Controller
     
     
     public function actionRestful(){
+        $redirectUrl = '/web/';
+        if (Yii::$app->user->isGuest)
+        {
+            return Yii::$app->getResponse()->redirect($redirectUrl);
+        }
         return $this->render('restful');
     }
 }

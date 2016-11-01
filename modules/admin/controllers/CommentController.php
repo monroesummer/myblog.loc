@@ -36,6 +36,11 @@ class CommentController extends Controller
      */
     public function actionIndex()
     {
+        $redirectUrl = '/web/';
+        if (Yii::$app->user->isGuest)
+        {
+            return Yii::$app->getResponse()->redirect($redirectUrl);
+        }
         $searchModel = new CommentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -52,6 +57,11 @@ class CommentController extends Controller
      */
     public function actionView($id)
     {
+        $redirectUrl = '/web/';
+        if (Yii::$app->user->isGuest)
+        {
+            return Yii::$app->getResponse()->redirect($redirectUrl);
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -64,6 +74,11 @@ class CommentController extends Controller
      */
     public function actionCreate()
     {
+        $redirectUrl = '/web/';
+        if (Yii::$app->user->isGuest)
+        {
+            return Yii::$app->getResponse()->redirect($redirectUrl);
+        }
         $model = new Comment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -84,6 +99,11 @@ class CommentController extends Controller
      */
     public function actionUpdate($id)
     {
+        $redirectUrl = '/web/';
+        if (Yii::$app->user->isGuest)
+        {
+            return Yii::$app->getResponse()->redirect($redirectUrl);
+        }
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -104,6 +124,11 @@ class CommentController extends Controller
      */
     public function actionDelete($id)
     {
+        $redirectUrl = '/web/';
+        if (Yii::$app->user->isGuest)
+        {
+            return Yii::$app->getResponse()->redirect($redirectUrl);
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -118,6 +143,11 @@ class CommentController extends Controller
      */
     protected function findModel($id)
     {
+        $redirectUrl = '/web/';
+        if (Yii::$app->user->isGuest)
+        {
+            return Yii::$app->getResponse()->redirect($redirectUrl);
+        }
         if (($model = Comment::findOne($id)) !== null) {
             return $model;
         } else {

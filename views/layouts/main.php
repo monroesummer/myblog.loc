@@ -61,7 +61,7 @@ AppAsset::register($this);
 //            ['label' => 'Связаться со мной', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 [
-                    'label' => '<em><span class="glyphicon glyphicon-sunglasses"></span> Панель администратора',
+                    'label' => '<span class="glyphicon glyphicon-sunglasses"></span> Панель администратора',
                     'url' => ['/site/login']]
             ) : (
 //            ['label' => Yii::$app->user->identity->username, 'items' => [
