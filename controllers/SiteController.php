@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Category;
+use app\models\CommentForm;
 use app\models\Post;
 use Yii;
 use yii\filters\AccessControl;
@@ -128,14 +129,27 @@ class SiteController extends Controller
     public function actionPost(){
 
         $id = \Yii::$app->request->get('id');
-        
         $post = Post::findOne($id);
-        
         if(empty($post)) throw new HttpException(404, 'Такой страницы нет.');
 
+        $model = new CommentForm();
         
-        return $this->render('post', compact('id', 'post'));
+        if (isset($_POST['CommentForm']))
+        {
+            $model->comment_post = $id;
+//            debug($_POST['CommentForm']);
+//            die();
+            $model->attributes= Yii::$app->request->post('CommentForm');
 
+            if ($model->validate())
+            {
+                $model->writeComment();
+            }
+
+        }
+
+
+        return $this->render('post', compact('id', 'post', 'model'));
     }
     
     

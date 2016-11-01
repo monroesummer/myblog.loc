@@ -8,9 +8,13 @@ class m161020_213826_create_tables extends Migration
     public function safeUp()
     {
         $tableOptions = null;
+
         if ($this->db->driverName === 'mysql') {
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
+
+
+
         $this->createTable('{{%user}}', [
             'id' => Schema::TYPE_PK,
             'username' => Schema::TYPE_STRING . ' NOT NULL',
@@ -20,12 +24,19 @@ class m161020_213826_create_tables extends Migration
             'email' => Schema::TYPE_STRING . ' NOT NULL'
         ], $tableOptions);
         $this->createIndex('username', '{{%user}}', 'username', true);
+
+
+
+
         $this->createTable('{{%category}}', [
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING . ' NOT NULL',
             'description' => Schema::TYPE_STRING
         ], $tableOptions);
         $this->createIndex('name', '{{%category}}', 'name', true);
+
+        
+
         $this->createTable('{{%post}}', [
             'id' => Schema::TYPE_PK,
             'title' => Schema::TYPE_STRING . ' NOT NULL',
@@ -36,17 +47,25 @@ class m161020_213826_create_tables extends Migration
             'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL'
         ], $tableOptions);
         $this->createIndex('status', '{{%post}}', 'status');
+
+
+        
         $this->createTable('{{%comment}}', [
             'id' => Schema::TYPE_PK,
             'author' => Schema::TYPE_STRING . ' NOT NULL',
             'email' => Schema::TYPE_STRING . ' NOT NULL',
-            'url' => Schema::TYPE_STRING . ' NOT NULL',
             'content' => Schema::TYPE_TEXT . ' NOT NULL',
+            'comment_post' => Schema::TYPE_SMALLINT . ' NOT NULL',
             'status' => Schema::TYPE_SMALLINT . ' NOT NULL'
+
         ], $tableOptions);
         $this->createIndex('status', '{{%comment}}', 'status');
+
+
         $this->execute($this->addUserSql());
     }
+
+
     private function addUserSql()
     {
         $password = Yii::$app->security->generatePasswordHash('admin');
@@ -54,6 +73,8 @@ class m161020_213826_create_tables extends Migration
         $token = Yii::$app->security->generateRandomString() . '_' . time();
         return "INSERT INTO {{%user}} (`username`, `email`, `password`, `auth_key`, `token`) VALUES ('admin', 'admin@myblog.loc', '$password', '$auth_key', '$token')";
     }
+
+
     public function safeDown()
     {
         $this->dropTable('{{%user}}');

@@ -16,15 +16,11 @@ use Yii;
 class Comment extends \yii\db\ActiveRecord
 {
 
-    
     public static function tableName()
     {
         return '{{%comment}}';
     }
 
-
-    
-    
     public function rules()
     {
         return [
@@ -34,9 +30,6 @@ class Comment extends \yii\db\ActiveRecord
             [['author', 'email'], 'string', 'max' => 255],
         ];
     }
-
- 
-    
     
     public function attributeLabels()
     {
@@ -44,11 +37,14 @@ class Comment extends \yii\db\ActiveRecord
             'id' => 'ID',
             'author' => 'Автор',
             'email' => 'Email',
-            'content' => 'Текст',
+            'content' => 'Комментарий',
             'comment_post' => 'Заголовок',
             'status' => 'Статус',
         ];
     }
+    
+    
+    
 
     public function getPost()
     {

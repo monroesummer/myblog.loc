@@ -54,6 +54,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>Мониторить изменения мы можем по <em>адресу <a href="http://r-ful.api/web/categories" target="_blank"> http://r-ful.api/web/categories</a></em></p>
 
+    <p><h3>Примеры фильтрации ответа:</h3></p>
+    <p>Мы может отфильтровать ответ. Например достать только значения <kbd>id,title,content</kbd> в <kbd>posts</kbd>, и достать таблицу его категории <kbd>category</kbd>:</p>
+    <p><kbd>http://r-ful.api/web/posts?fields=id,title,content&expand=category</kbd></p>
 
 
 </div>
