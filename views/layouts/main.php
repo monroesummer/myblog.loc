@@ -39,38 +39,29 @@ AppAsset::register($this);
         'encodeLabels' => false,
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-
             [
                 'label' => '<span class="glyphicon glyphicon-home"></span> Главная',
                 'url' => ['/site/index']
             ],
-
             [
                 'label' => '<span class="glyphicon glyphicon-bookmark"></span> Статьи',
                 'url' => ['/site/category']
             ],
-
             [
                 'label' => '<span class ="glyphicon glyphicon-info-sign"></span> О блоге',
                 'url' => ['/site/about']
             ],
-
-
-
-
-//            ['label' => 'Связаться со мной', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 [
                     'label' => '<span class="glyphicon glyphicon-sunglasses"></span> Панель администратора',
                     'url' => ['/site/login']]
             ) : (
-//            ['label' => Yii::$app->user->identity->username, 'items' => [
+
             ['label' => '<span class="glyphicon glyphicon-sunglasses"></span> Панель Администратора', 'items' => [
                 [
                     'label' => '<span class ="glyphicon glyphicon-wrench"></span> Конструкция сайта',
                     'url' => ['/site/construction']
                 ],
-
                 [
                     'label' => '<span class ="glyphicon glyphicon-hdd"></span> RESTful Web Service',
                     'url' => ['/site/restful']
@@ -87,14 +78,7 @@ AppAsset::register($this);
         ],
     ]);
     NavBar::end();
-    //Navbar end here----------------------------------------------------------------------------------------
     ?>
-
-
-
-
-
-
 
     <div class="container">
         <?= Breadcrumbs::widget([
@@ -104,11 +88,8 @@ AppAsset::register($this);
     </div>
 </div>
 
-
-
 <footer class="footer">
     <div class="container">
-
         <p class="pull-left">
             <em>
                 <strong>
@@ -118,7 +99,6 @@ AppAsset::register($this);
                 </strong>
             </em>
             <br>
-
             <strong>
                 <em>
                     <span class="label label-success">Email: <a href="mailto:rustamasylgareev@gmail.com">rustamasylgareev@gmail.com</a></span>
@@ -127,7 +107,6 @@ AppAsset::register($this);
             </strong>
             <br>
         </p>
-
         <p class="pull-right">
             <em><strong><span class="label label-success">&copy; Мой блог <?= date('Y') ?></span></strong></em><br>
             <small> <em><strong><span class="label label-success"><?= Yii::powered() ?></span></strong></em></small>
