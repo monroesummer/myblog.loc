@@ -84,6 +84,7 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+        
         <?= $content ?>
     </div>
 </div>
@@ -93,16 +94,16 @@ AppAsset::register($this);
         <p class="pull-left">
             <em>
                 <strong>
-                    <span class="label label-success">Rustam Asylgareev Development</span>
-                    <span class="label label-success"><abbr title="Phone">P:</abbr> 8 (917) 281-4527</span>
-                    <span class="label label-success">Vk.com: <a href="https://vk.com/maxkruse" target="_blank">https://vk.com/maxkruse</a></span>
+                    <small><span class="label label-success">Rustam Asylgareev Development</span></small>
+                    <small><span class="label label-success"><abbr title="Phone">P:</abbr> 8 (917) 281-4527</span></small>
+                        <small><span class="label label-success">Vk.com: <a href="https://vk.com/maxkruse" target="_blank">https://vk.com/maxkruse</a></span></small>
                 </strong>
             </em>
             <br>
             <strong>
                 <em>
-                    <span class="label label-success">Email: <a href="mailto:rustamasylgareev@gmail.com">rustamasylgareev@gmail.com</a></span>
-                    <span class="label label-success">Github: <a href="https://github.com/monroesummer" target="_blank">https://github.com/monroesummer</a></span>
+                    <small><span class="label label-success">Email: <a href="mailto:rustamasylgareev@gmail.com">rustamasylgareev@gmail.com</a></span></small>
+                    <small><span class="label label-success">Github: <a href="https://github.com/monroesummer" target="_blank">https://github.com/monroesummer</a></span></small>
                 </em>
             </strong>
             <br>

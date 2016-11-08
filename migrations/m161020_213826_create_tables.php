@@ -7,79 +7,52 @@ class m161020_213826_create_tables extends Migration
 {
     public function safeUp()
     {
-        $tableOptions = null;
 
-        if ($this->db->driverName === 'mysql') {
-            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
-        }
-
-
-
-        $this->createTable('{{%user}}', [
+// blog_category
+        $this->createTable('{{%blog_category}}', [
             'id' => Schema::TYPE_PK,
-            'username' => Schema::TYPE_STRING . ' NOT NULL',
-            'password' => Schema::TYPE_STRING . ' NOT NULL',
-            'auth_key' => Schema::TYPE_STRING . ' NOT NULL',
-            'token' => Schema::TYPE_STRING . ' NOT NULL',
-            'email' => Schema::TYPE_STRING . ' NOT NULL'
-        ], $tableOptions);
-        $this->createIndex('username', '{{%user}}', 'username', true);
+            'name' => Schema::TYPE_STRING . "(255) NOT NULL",
+            'description' => Schema::TYPE_TEXT . " NULL",
+        ], $this->tableOptions);
 
-
-
-
-        $this->createTable('{{%category}}', [
+// blog_comment
+        $this->createTable('{{%blog_comment}}', [
             'id' => Schema::TYPE_PK,
-            'name' => Schema::TYPE_STRING . ' NOT NULL',
-            'description' => Schema::TYPE_STRING
-        ], $tableOptions);
-        $this->createIndex('name', '{{%category}}', 'name', true);
+            'author' => Schema::TYPE_STRING . "(255) NOT NULL",
+            'email' => Schema::TYPE_STRING . "(255) NOT NULL",
+            'content' => Schema::TYPE_TEXT . " NOT NULL",
+            'comment_post' => Schema::TYPE_SMALLINT . "(6) UNSIGNED NOT NULL",
+            'created_at' => Schema::TYPE_INTEGER . "(11) NOT NULL",
+            'status' => Schema::TYPE_SMALLINT . "(6) NOT NULL",
+        ], $this->tableOptions);
 
-        
+// blog_migration
+        $this->createTable('{{%blog_migration}}', [
+            'version' => Schema::TYPE_STRING . "(180) NOT NULL",
+            'apply_time' => Schema::TYPE_INTEGER . "(11) NULL",
+            'PRIMARY KEY (version)',
+        ], $this->tableOptions);
 
-        $this->createTable('{{%post}}', [
+// blog_post
+        $this->createTable('{{%blog_post}}', [
             'id' => Schema::TYPE_PK,
-            'title' => Schema::TYPE_STRING . ' NOT NULL',
-            'content' => Schema::TYPE_TEXT . ' NOT NULL',
-            'category_id' => Schema::TYPE_SMALLINT . ' unsigned NOT NULL',
-            'status' => Schema::TYPE_SMALLINT . ' NOT NULL',
-            'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL'
-        ], $tableOptions);
-        $this->createIndex('status', '{{%post}}', 'status');
+            'title' => Schema::TYPE_STRING . "(255) NOT NULL",
+            'content' => Schema::TYPE_TEXT . " NOT NULL",
+            'category_id' => Schema::TYPE_SMALLINT . "(6) UNSIGNED NOT NULL",
+            'status' => Schema::TYPE_SMALLINT . "(6) NOT NULL",
+            'created_at' => Schema::TYPE_INTEGER . "(11) NOT NULL",
+            'updated_at' => Schema::TYPE_INTEGER . "(11) NOT NULL",
+        ], $this->tableOptions);
 
-
-        
-        $this->createTable('{{%comment}}', [
+// blog_user
+        $this->createTable('{{%blog_user}}', [
             'id' => Schema::TYPE_PK,
-            'author' => Schema::TYPE_STRING . ' NOT NULL',
-            'email' => Schema::TYPE_STRING . ' NOT NULL',
-            'content' => Schema::TYPE_TEXT . ' NOT NULL',
-            'comment_post' => Schema::TYPE_SMALLINT . ' NOT NULL',
-            'status' => Schema::TYPE_SMALLINT . ' NOT NULL'
-
-        ], $tableOptions);
-        $this->createIndex('status', '{{%comment}}', 'status');
-
-
-        $this->execute($this->addUserSql());
+            'username' => Schema::TYPE_STRING . "(255) NOT NULL",
+            'password' => Schema::TYPE_STRING . "(255) NOT NULL",
+            'auth_key' => Schema::TYPE_STRING . "(255) NOT NULL",
+            'token' => Schema::TYPE_STRING . "(255) NOT NULL",
+            'email' => Schema::TYPE_STRING . "(255) NOT NULL",
+        ], $this->tableOptions);
     }
 
-
-    private function addUserSql()
-    {
-        $password = Yii::$app->security->generatePasswordHash('admin');
-        $auth_key = Yii::$app->security->generateRandomString();
-        $token = Yii::$app->security->generateRandomString() . '_' . time();
-        return "INSERT INTO {{%user}} (`username`, `email`, `password`, `auth_key`, `token`) VALUES ('admin', 'admin@myblog.loc', '$password', '$auth_key', '$token')";
-    }
-
-
-    public function safeDown()
-    {
-        $this->dropTable('{{%user}}');
-        $this->dropTable('{{%post}}');
-        $this->dropTable('{{%comment}}');
-        $this->dropTable('{{%category}}');
-    }
 }

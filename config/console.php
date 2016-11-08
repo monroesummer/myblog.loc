@@ -22,6 +22,18 @@ $config = [
         ],
         'db' => $db,
     ],
+
+    'controllerMap' => [
+        'migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'templateFile' => '@jamband/schemadump/template.php',
+        ],
+        'schemadump' => [
+            'class' => 'jamband\schemadump\SchemaDumpController',
+        ],
+    ],
+
+
     'params' => $params,
     /*
     'controllerMap' => [
