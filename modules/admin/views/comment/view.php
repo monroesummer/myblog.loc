@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Comment */
 
-$this->title = $model->id;
+$this->title = $model->author;
 $this->params['breadcrumbs'][] = ['label' => 'Комментарии', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+//            'id',
             'author',
             'email:email',
             'content:ntext',
@@ -37,6 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'status',
                 'value' => ($model->status==1)?'Опубликован':'Черновик',
             ],
+            'created_at:datetime',
+
         ],
     ]) ?>
 

@@ -44,8 +44,25 @@ AppAsset::register($this);
                 'url' => ['/site/index']
             ],
             [
+                'label' => '<span class="glyphicon glyphicon-flag"></span> Мотиватор',
+                'url' => ['/site/motivate']
+            ],
+            [
+                'label' => '<span class="glyphicon glyphicon-list-alt"></span> Ежедневник',
+                'url' => ['/site/diary']
+            ],
+
+            [
                 'label' => '<span class="glyphicon glyphicon-bookmark"></span> Статьи',
                 'url' => ['/site/category']
+            ],
+            [
+                'label' => '<span class="glyphicon glyphicon-bell"></span> Идея',
+                'url' => ['/site/idea']
+            ],
+            [
+                'label' => '<span class="glyphicon glyphicon-comment"></span> Чат',
+                'url' => ['/site/chat']
             ],
             [
                 'label' => '<span class ="glyphicon glyphicon-info-sign"></span> О блоге',
@@ -57,9 +74,9 @@ AppAsset::register($this);
                     'url' => ['/site/login']]
             ) : (
 
-            ['label' => '<span class="glyphicon glyphicon-sunglasses"></span> Панель Администратора', 'items' => [
+            ['label' => '<span class="glyphicon glyphicon-briefcase"></span> Панель Администратора', 'items' => [
                 [
-                    'label' => '<span class ="glyphicon glyphicon-wrench"></span> Конструкция сайта',
+                    'label' => '<span class ="glyphicon glyphicon-wrench"></span> Конструкция',
                     'url' => ['/site/construction']
                 ],
                 [
@@ -69,6 +86,7 @@ AppAsset::register($this);
                 ['label' => '<span class="glyphicon glyphicon-book"></span> Категории', 'url' => ['/admin/category']],
                 ['label' => '<span class="glyphicon glyphicon-pencil"></span> Статьи', 'url' => ['/admin/post']],
                 ['label' => '<span class="glyphicon glyphicon-send"></span> Комментарии', 'url' => ['/admin/comment']],
+                ['label' => '<span class="glyphicon glyphicon-flag"></span> Мотиватор', 'url' => ['/admin/motivate']],
                 [
                     'label' => '<span class="glyphicon glyphicon-remove-circle"></span> Выйти',
                     'url' => ['/site/logout'],

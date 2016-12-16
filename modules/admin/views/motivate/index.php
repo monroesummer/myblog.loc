@@ -4,35 +4,32 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\PostSearch */
+/* @var $searchModel app\models\MotivateSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Статьи';
+$this->title = 'Мотиватор';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="post-index">
+<div class="motivate-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Создать статью', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать Цель', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
-        'filterModel' => $searchModel,
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+
 //            'id',
-            'title',
-            'content:ntext',
-            'category.name',
             'created_at:datetime',
-            'updated_at:datetime',
-            [
-                'attribute' => 'status',
-                'value' => function ($data) { return ($data->status==1)?'Опубликован':'Черновик'; }
-            ],
+            'target',
+            'description:ntext',
+            'deadline',
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

@@ -40,6 +40,7 @@ class Comment extends \yii\db\ActiveRecord
             'email' => 'Email',
             'content' => 'Комментарий',
             'comment_post' => 'Заголовок',
+            'created_at' => 'Создан',
             'status' => 'Статус',
         ];
     }

@@ -4,11 +4,9 @@
 /* @var $this yii\web\View */
 
 $this->title = 'Категории';
+$this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="page-header">
-    <h1><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Категории, доступные к просмотру: </h1>
-</div>
 
 
 <?php if(!empty($categories)): ?>

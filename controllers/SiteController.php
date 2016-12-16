@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Category;
 use app\models\CommentForm;
+use app\models\Motivate;
 use app\models\Post;
 use Yii;
 use yii\filters\AccessControl;
@@ -15,10 +16,7 @@ use yii\web\HttpException;
 
 class SiteController extends Controller
 {
-    
-    /**
-     * @inheritdoc
-     */
+
     public function behaviors()
     {
         return [
@@ -41,10 +39,7 @@ class SiteController extends Controller
             ],
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
+    
     public function actions()
     {
         return [
@@ -57,19 +52,13 @@ class SiteController extends Controller
             ],
         ];
     }
-
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
+    
     public function actionIndex()
     {
 
         return $this->render('index');
 
     }
-
     
     public function actionLogin()
     {
@@ -86,15 +75,13 @@ class SiteController extends Controller
         ]);
     }
 
-
     public function actionLogout()
     {
         Yii::$app->user->logout();
 
         return $this->goHome();
     }
-
-
+    
     public function actionContact()
     {
         $model = new ContactForm();
@@ -130,9 +117,7 @@ class SiteController extends Controller
         return $this->render('category', compact('categories'));
 
     }
-
     public function actionPost(){
-
         $id = \Yii::$app->request->get('id');
         $post = Post::findOne($id);
         if(empty($post)) throw new HttpException(404, 'Такой страницы нет.');
@@ -150,10 +135,8 @@ class SiteController extends Controller
             {
                 $model->writeComment();
             }
-
         }
-
-
+        
         return $this->render('post', compact('id', 'post', 'model'));
     }
     
@@ -165,5 +148,22 @@ class SiteController extends Controller
             return Yii::$app->getResponse()->redirect($redirectUrl);
         }
         return $this->render('restful');
+    }
+    public function  actionMotivate(){
+
+        $motivates = Motivate::find()->all();
+
+        return $this->render('motivate', compact('motivates'));
+    }
+    
+    public function actionDiary(){
+        return $this->render('diary');
+    }
+
+    public function actionIdea(){
+        return $this->render('idea');
+    }
+    public function actionChat(){
+        return $this->render('chat');
     }
 }

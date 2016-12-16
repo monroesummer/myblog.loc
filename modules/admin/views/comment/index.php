@@ -24,11 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'author',
             'email:email',
             'content:ntext',
             'post.title',
+            'created_at:datetime',
             [
                 'attribute' => 'status',
                 'value' => function ($data) { return ($data->status==1)?'Опубликован':'Черновик'; }
