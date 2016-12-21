@@ -9,8 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Category;
-
-
+use app\models;
+use yii\web\UploadedFile;
 
 
 /**
@@ -37,19 +37,57 @@ class PostController extends Controller
      * Lists all Post models.
      * @return mixed
      */
+
+    public function actionUploaded(){
+
+     
+
+        $model = new models\OfferForm();
+        $categories = Category::find()->all();
+        if (isset($_POST['OfferForm']))
+        {
+            $model->attributes= Yii::$app->request->post('OfferForm');
+
+            if ($model->validate())
+            {
+                $model->writeOffer();
+                
+            }
+        }
+        
+        return $this->render('uploaded', compact('model', 'categories'));
+    }
+
     public function actionIndex()
     {
         $redirectUrl = '/web/';
+        $redirectUrlUploaded = '/web/admin/post/uploaded';
         if (Yii::$app->user->isGuest)
         {
             return Yii::$app->getResponse()->redirect($redirectUrl);
         }
+
+        ///////////////
+        $model = new models\UploadForm();
+
+        if (Yii::$app->request->isPost) {
+            $model->file = UploadedFile::getInstance($model, 'file');
+
+            if ($model->file && $model->validate()) {
+                $model->file->saveAs(Yii::getAlias('@webroot') . '/uploads/' . $model->file->baseName . '.' . $model->file->extension);
+                Yii::$app->getResponse()->redirect($redirectUrlUploaded);
+
+            }
+        }
+        ////////////////
+
         $searchModel = new PostSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 

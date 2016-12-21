@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 
 $this->title = 'Категории';
@@ -49,9 +50,10 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 
+    <?= Html::a('<span class="glyphicon glyphicon-bookmark"></span> Предложить', ['/site/offer'], ['class'=>'btn btn-success btn-lg']) ?>
 
 
-<?= Html::a('<span class="glyphicon glyphicon-bookmark"></span> Предложить', ['/site/offer'], ['class'=>'btn btn-success btn-lg']) ?>
+
 
 
 

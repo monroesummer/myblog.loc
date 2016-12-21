@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PostSearch */
@@ -17,6 +18,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Создать статью', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+    <p>
+        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+
+        <?= $form->field($model, 'file')->fileInput() ?>
+
+        <button class = "btn btn-success btn-lg">Отправить</button>
+
+        <?php ActiveForm::end() ?>
     </p>
     <?= GridView::widget([
         'filterModel' => $searchModel,

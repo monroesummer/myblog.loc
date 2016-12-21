@@ -7,6 +7,7 @@ use app\models\CommentForm;
 use app\models\Motivate;
 use app\models\OfferForm;
 use app\models\Post;
+use app\models\UploadForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -14,6 +15,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use yii\web\HttpException;
+use yii\web\UploadedFile;
 
 class SiteController extends Controller
 {
@@ -114,6 +116,7 @@ class SiteController extends Controller
     public function actionCategory()
     {
 
+        
         $categories = Category::find()->with('posts')->all();
         return $this->render('category', compact('categories'));
 
@@ -176,9 +179,7 @@ class SiteController extends Controller
         $model = new OfferForm();
 
         if (isset($_POST['OfferForm']))
-
         {
-
 //            debug($_POST['OfferForm']);
 //            die();
             $model->attributes= Yii::$app->request->post('OfferForm');
@@ -215,6 +216,8 @@ class SiteController extends Controller
         $post = Post::findOne($id);
 
         if(empty($post)) throw new HttpException(404, 'Такой страницы нет.');
+
+
 
         return $this->render('json', compact('id', 'post'));
     }

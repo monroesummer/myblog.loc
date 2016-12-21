@@ -55,20 +55,5 @@ file_put_contents($file, $json);
 
 <?= Html::a('<span class="glyphicon glyphicon-bookmark"></span> Скачать', ['/site/download', 'id' => $post->id], ['class'=>'btn btn-success btn-lg']) ?>
 
-<!---->
-<!--<div class="col-md-3">-->
-<!--<a href="--><?//=\yii\helpers\Url::to(['site/download', 'id'=> $post->id])?><!--">-->
-<!--    <small>-->
-<!--        <em>-->
-<!--            <li class="list-group-item">-->
-<!--                <h4>Скачать: <span class="glyphicon glyphicon-pencil"></span> --><?//=$post->title?><!--<br>-->
-<!--                --><?php //if($post->status == 1)
-//                    echo 'Статус: <span class="glyphicon glyphicon-saved"></span> Публикация';
-//                else
-//                    echo 'Статус: <span class="glyphicon glyphicon-erase"></span> Черновик' ?><!--</h4>-->
-<!---->
-<!--            </li>-->
-<!--        </em>-->
-<!--    </small>-->
-<!--</a>-->
-<!--</div>-->
+
+
