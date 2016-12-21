@@ -6,6 +6,7 @@ use Yii;
 use app\models\Post;
 use app\models\PostSearch;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Category;
@@ -52,6 +53,12 @@ class PostController extends Controller
             {
                 $model->writeOffer();
                 
+                Yii::$app->getResponse()->redirect(\yii\helpers\Url::to(['post/index']));
+
+            }
+            else
+            {
+                throw new HttpException('Ошибка.');
             }
         }
         

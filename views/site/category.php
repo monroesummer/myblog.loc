@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
-
+<hr>
     <?= Html::a('<span class="glyphicon glyphicon-bookmark"></span> Предложить', ['/site/offer'], ['class'=>'btn btn-success btn-lg']) ?>
 
 

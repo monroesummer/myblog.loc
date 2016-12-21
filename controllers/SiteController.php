@@ -133,13 +133,14 @@ class SiteController extends Controller
         if (isset($_POST['CommentForm']))
         {
             $model->comment_post = $id;
-//            debug($_POST['CommentForm']);
-//            die();
+            
             $model->attributes= Yii::$app->request->post('CommentForm');
 
             if ($model->validate())
             {
                 $model->writeComment();
+               
+
             }
         }
         
@@ -188,6 +189,8 @@ class SiteController extends Controller
             {
                 $model->writeOffer();
                 Yii::$app->getResponse()->redirect(\yii\helpers\Url::to(['site/offer']));
+
+                
             }
         }
         return $this->render('offer', compact('model', 'categories', 'posts'));

@@ -2,12 +2,16 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 $this->title = $post->title;
+$this->params['breadcrumbs'][] = ['label' => 'Категории', 'url' => ['category']];
 $this->params['breadcrumbs'][] = ['label' => 'Предложить', 'url' => ['offer']];
 $this->params['breadcrumbs'][] = $this->title;
 $comments  = $post->comments;
 ?>
 
-<h3><span class="glyphicon glyphicon-pencil"></span> Информация: </h3>
+
+<h3><span class="glyphicon glyphicon-ok"></span> Json успешно сгенерирован! </h3>
+<hr>
+<h3><span class="glyphicon glyphicon-info-sign"></span> Информация: </h3>
 <hr>
 
 <ul class="list-group">
@@ -50,10 +54,12 @@ debug($array);
 $json = json_encode($array);
 $file = Yii::getAlias('@webroot') . '/offer/' . $post->id . '.json' ;
 file_put_contents($file, $json);
+
+
 ?>
+<hr>
 
-
-<?= Html::a('<span class="glyphicon glyphicon-bookmark"></span> Скачать', ['/site/download', 'id' => $post->id], ['class'=>'btn btn-success btn-lg']) ?>
+<?= Html::a('<span class="glyphicon glyphicon-download-alt"></span> Скачать', ['/site/download', 'id' => $post->id], ['class'=>'btn btn-success btn-lg']) ?>
 
 
 

@@ -13,6 +13,7 @@ use yii\base\Model;
 
 class OfferForm extends Model
 {
+    public $id;
     public $title;
     public $content;
     public $category_id;
@@ -25,7 +26,7 @@ class OfferForm extends Model
         return [
 
             [['title','content', 'category_id', 'status'], 'required'],
-            [['status','category_id'], 'integer'],
+            [['status','category_id', 'id'], 'integer'],
             [['title'], 'string', 'max' => 255],
             [['content'], 'string'],
         ];

@@ -18,7 +18,7 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'content')->textarea(['rows' => 16]) ?>
 
     <?= $form->field($model, 'category_id')->dropDownList(
         ArrayHelper::map($category, 'id', 'name')

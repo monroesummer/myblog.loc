@@ -20,7 +20,14 @@ class UploadForm extends Model
     public function rules()
     {
         return [
-            [['file'], 'file'],
+            [['file'], 'file' ],
+        ];
+    }
+    public function attributeLabels()
+    {
+        return [
+            'file' => 'Прикрепить файл',
+
         ];
     }
 }

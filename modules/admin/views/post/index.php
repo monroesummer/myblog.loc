@@ -19,15 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Создать статью', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <p>
-        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
-
-        <?= $form->field($model, 'file')->fileInput() ?>
-
-        <button class = "btn btn-success btn-lg">Отправить</button>
-
-        <?php ActiveForm::end() ?>
-    </p>
+    
     <?= GridView::widget([
         'filterModel' => $searchModel,
         'dataProvider' => $dataProvider,
@@ -47,3 +39,13 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div>
+
+
+<hr>
+<?php $form = ActiveForm::begin(['options' => [ 'enctype' => 'multipart/form-data']]) ?>
+
+    <?= $form->field($model, 'file')->label(null,['class'=>'btn btn-success']) ->fileInput(['class'=>'sr-only']) ?>
+
+    <button class = "btn btn-success btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span> Отправить</button>
+
+<?php ActiveForm::end() ?>

@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 $this->title = 'Предложить';
+$this->params['breadcrumbs'][] = ['label' => 'Категории', 'url' => ['category']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -35,9 +36,10 @@ use yii\helpers\ArrayHelper;
 
                 <div class="panel-body">
                     <div class="well well-sm">
-                        <?=$form->field($model, 'content')->textarea(['rows' => 6]) ?>
+                        <?=$form->field($model, 'content')->textarea(['rows' => 10]) ?>
                     </div>
-                    <button type="submit" class="btn btn-success btn-lg">Предложить</button>
+                    <?= Html::a('Назад', ['/site/category'], ['class'=>'btn btn-danger btn-lg']) ?>
+                    <button type="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-bookmark"></span> Предложить</button>
 
 
 
@@ -50,7 +52,7 @@ use yii\helpers\ArrayHelper;
         <div class="col-md-4">
                 <div class="panel panel-success">
                     <div class="panel-heading">
-                    <h2>Json - вид:</h2>
+                    <h2>Сгенерировать Json:</h2>
                         <ul class="list-group">
                             <?php foreach ($posts as $post): ?>
                                 <a href="<?=\yii\helpers\Url::to(['site/json', 'id'=> $post->id])?>">
