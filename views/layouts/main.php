@@ -43,38 +43,47 @@ AppAsset::register($this);
                 'label' => '<span class="glyphicon glyphicon-home"></span> Главная',
                 'url' => ['/site/index']
             ],
-            [
-                'label' => '<span class="glyphicon glyphicon-flag"></span> Мотиватор',
-                'url' => ['/site/motivate']
-            ],
-            [
-                'label' => '<span class="glyphicon glyphicon-list-alt"></span> Ежедневник',
-                'url' => ['/site/diary']
-            ],
+
 
             [
                 'label' => '<span class="glyphicon glyphicon-bookmark"></span> Статьи',
                 'url' => ['/site/category']
             ],
-            [
-                'label' => '<span class="glyphicon glyphicon-bell"></span> Идея',
-                'url' => ['/site/idea']
-            ],
-            [
-                'label' => '<span class="glyphicon glyphicon-comment"></span> Чат',
-                'url' => ['/site/chat']
-            ],
+
+           
+
+
+
             [
                 'label' => '<span class ="glyphicon glyphicon-info-sign"></span> О блоге',
                 'url' => ['/site/about']
             ],
+            ['label' => '<span class="glyphicon glyphicon-arrow-up"></span> Приложения', 'items' => [
+                [
+                    'label' => '<span class="glyphicon glyphicon-flag"></span> Мотиватор',
+                    'url' => ['/site/motivate']
+                ],
+                [
+                    'label' => '<span class="glyphicon glyphicon-list-alt"></span> Ежедневник',
+                    'url' => ['/site/diary']
+                ],
+                [
+                    'label' => '<span class="glyphicon glyphicon-bell"></span> Идея',
+                    'url' => ['/site/idea']
+                ],
+                [
+                    'label' => '<span class="glyphicon glyphicon-comment"></span> Чат',
+                    'url' => ['/site/chat']
+                ],
+
+            ]],
             Yii::$app->user->isGuest ? (
                 [
-                    'label' => '<span class="glyphicon glyphicon-sunglasses"></span> Панель администратора',
+                    'label' => '<span class="glyphicon glyphicon-briefcase"></span> Вход',
                     'url' => ['/site/login']]
             ) : (
 
-            ['label' => '<span class="glyphicon glyphicon-briefcase"></span> Панель Администратора', 'items' => [
+            ['label' => '<span class="glyphicon glyphicon-briefcase"></span> Функции', 'items' => [
                 [
                     'label' => '<span class ="glyphicon glyphicon-wrench"></span> Конструкция',
                     'url' => ['/site/construction']
@@ -97,16 +106,17 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
-
+    
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        
+
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                
         <?= $content ?>
     </div>
-</div>
 
+</div>
 <footer class="footer">
     <div class="container">
         <p class="pull-left">
@@ -114,25 +124,22 @@ AppAsset::register($this);
                 <strong>
                     <small><span class="label label-success">Rustam Asylgareev Development</span></small>
                     <small><span class="label label-success"><abbr title="Phone">P:</abbr> 8 (917) 281-4527</span></small>
-                        <small><span class="label label-success">Vk.com: <a href="https://vk.com/maxkruse" target="_blank">https://vk.com/maxkruse</a></span></small>
+                    <small><span class="label label-success">Vk.com: <a href="https://vk.com/maxkruse" target="_blank">https://vk.com/maxkruse</a></span></small>
                 </strong>
             </em>
-            <br>
             <strong>
                 <em>
                     <small><span class="label label-success">Email: <a href="mailto:rustamasylgareev@gmail.com">rustamasylgareev@gmail.com</a></span></small>
                     <small><span class="label label-success">Github: <a href="https://github.com/monroesummer" target="_blank">https://github.com/monroesummer</a></span></small>
                 </em>
             </strong>
-            <br>
         </p>
         <p class="pull-right">
-            <em><strong><span class="label label-success">&copy; Мой блог <?= date('Y') ?></span></strong></em><br>
-            <small> <em><strong><span class="label label-success"><?= Yii::powered() ?></span></strong></em></small>
+            <em><strong><span class="label label-success">&copy; Мой блог <?= date('Y') ?></span></strong></em>
+            <small><em><strong><span class="label label-success"><?= Yii::powered() ?></span></strong></em></small>
         </p>
     </div>
 </footer>
-
 <?php $this->endBody() ?>
 </body>
 </html>

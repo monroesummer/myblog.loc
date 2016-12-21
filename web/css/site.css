@@ -114,3 +114,14 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+.block {
+    background: #eee;
+    border: 1px solid #ccc;
+}
+hr{
+    border-color: #ccc;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}

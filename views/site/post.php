@@ -62,7 +62,6 @@ $comments  = $post->comments;
         </div>
         <button type="submit" class="btn btn-success btn-lg">Отправить</button>
     </div>
-
+</div>
 <?php ActiveForm::end(); ?>
 
-</div>

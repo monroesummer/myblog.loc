@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Category;
 use app\models\CommentForm;
 use app\models\Motivate;
+use app\models\OfferForm;
 use app\models\Post;
 use Yii;
 use yii\filters\AccessControl;
@@ -117,6 +118,8 @@ class SiteController extends Controller
         return $this->render('category', compact('categories'));
 
     }
+
+
     public function actionPost(){
         $id = \Yii::$app->request->get('id');
         $post = Post::findOne($id);
@@ -166,4 +169,54 @@ class SiteController extends Controller
     public function actionChat(){
         return $this->render('chat');
     }
+    public function actionOffer(){
+
+        $categories = Category::find()->all();
+        $posts = Post::find()->all();
+        $model = new OfferForm();
+
+        if (isset($_POST['OfferForm']))
+
+        {
+
+//            debug($_POST['OfferForm']);
+//            die();
+            $model->attributes= Yii::$app->request->post('OfferForm');
+
+            if ($model->validate())
+            {
+                $model->writeOffer();
+                Yii::$app->getResponse()->redirect(\yii\helpers\Url::to(['site/offer']));
+            }
+        }
+        return $this->render('offer', compact('model', 'categories', 'posts'));
+    }
+
+
+    public function actionDownload($id) {
+    $file = Yii::getAlias('@webroot') . '/offer/' . $id . '.json' ;
+
+
+    if (file_exists($file)) {
+
+        ini_set('max_execution_time', 5*60);
+
+        return \Yii::$app->response->sendFile($file);
+
+    }
+    else{
+        throw new  \yii\web\NotFoundHttpException('Такого файла не существует.');
+    }
+
+    }
+    public function actionJson(){
+
+        $id = \Yii::$app->request->get('id');
+        $post = Post::findOne($id);
+
+        if(empty($post)) throw new HttpException(404, 'Такой страницы нет.');
+
+        return $this->render('json', compact('id', 'post'));
+    }
+
 }
