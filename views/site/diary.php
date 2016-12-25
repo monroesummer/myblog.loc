@@ -6,10 +6,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <h1>В разработке...</h1>
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
 <div class="panel panel-default">
-
 <div class="panel-heading">Понедельник</div>
-
 <ul class="list-group">
     <li class="list-group-item">10:00 - Подъем</li>
     <li class="list-group-item">10:30 - Пойти поесть</li>
@@ -22,4 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <li class="list-group-item">21:00 - Посмотреть что - нибудь</li>
 
 </ul>
+</div>
+            </div>
+    </div>
 </div>

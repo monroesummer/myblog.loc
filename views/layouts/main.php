@@ -64,15 +64,15 @@ AppAsset::register($this);
                     'url' => ['/site/motivate']
                 ],
                 [
-                    'label' => '<span class="glyphicon glyphicon-list-alt"></span> Ежедневник',
+                    'label' => '<span class="glyphicon glyphicon-list-alt"></span> Мой день',
                     'url' => ['/site/diary']
                 ],
                 [
-                    'label' => '<span class="glyphicon glyphicon-bell"></span> Идея',
+                    'label' => '<span class="glyphicon glyphicon-bell"></span> Muse',
                     'url' => ['/site/idea']
                 ],
                 [
-                    'label' => '<span class="glyphicon glyphicon-comment"></span> Чат',
+                    'label' => '<span class="glyphicon glyphicon-comment"></span> Социальная сеть',
                     'url' => ['/site/chat']
                 ],
 
