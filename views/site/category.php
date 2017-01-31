@@ -1,7 +1,5 @@
 <?php
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-/* @var $this yii\web\View */
 
 $this->title = 'Категории';
 $this->params['breadcrumbs'][] = $this->title;

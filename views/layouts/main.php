@@ -44,6 +44,12 @@ AppAsset::register($this);
                 'url' => ['/site/index']
             ],
 
+            [
+                'label' => '<span class="glyphicon glyphicon-apple"></span> Создать Резюме',
+                'url' => ['/site/summary']
+            ],
+
+
 
             [
                 'label' => '<span class="glyphicon glyphicon-bookmark"></span> Статьи',
@@ -89,9 +95,11 @@ AppAsset::register($this);
                     'label' => '<span class ="glyphicon glyphicon-hdd"></span> RESTful Web Service',
                     'url' => ['/site/restful']
                 ],
+                ['label' => '<span class="glyphicon glyphicon-apple"></span> Резюме', 'url' => ['/admin/summary']],
                 ['label' => '<span class="glyphicon glyphicon-book"></span> Категории', 'url' => ['/admin/category']],
                 ['label' => '<span class="glyphicon glyphicon-pencil"></span> Статьи', 'url' => ['/admin/post']],
                 ['label' => '<span class="glyphicon glyphicon-send"></span> Комментарии', 'url' => ['/admin/comment']],
+
                 ['label' => '<span class="glyphicon glyphicon-flag"></span> Мотиватор', 'url' => ['/admin/motivate']],
                 [
                     'label' => '<span class="glyphicon glyphicon-remove-circle"></span> Выйти',

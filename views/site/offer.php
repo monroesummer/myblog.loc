@@ -1,6 +1,8 @@
 <?php
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
-/* @var $this yii\web\View */
 
 $this->title = 'Предложить';
 $this->params['breadcrumbs'][] = ['label' => 'Категории', 'url' => ['category']];
@@ -8,19 +10,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<?php
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-
-use yii\helpers\ArrayHelper;
-?>
 <?php $form = ActiveForm::begin(['class'=>'form-horizontal']); ?>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-success">
-                <div class="panel-heading">
+                <div class="panel-body">
                     <?= $form->field($model, 'title') ?>
 
 
@@ -32,12 +28,10 @@ use yii\helpers\ArrayHelper;
                         '0' => 'Черновик',
                         //            '1' => 'Опубликован' // все приходит в черновике
                     ]) ?>
-                </div>
-
-                <div class="panel-body">
-                    <div class="well well-sm">
+                    
                         <?=$form->field($model, 'content')->textarea(['rows' => 10]) ?>
-                    </div>
+
+                    
                     <?= Html::a('Назад', ['/site/category'], ['class'=>'btn btn-danger btn-lg']) ?>
                     <button type="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-bookmark"></span> Предложить</button>
 

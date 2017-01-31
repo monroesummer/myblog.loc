@@ -7,8 +7,11 @@ use app\models\CommentForm;
 use app\models\Motivate;
 use app\models\OfferForm;
 use app\models\Post;
+use app\models\Summary;
+use app\models\SummaryForm;
 use app\models\UploadForm;
 use Yii;
+use yii\helpers\Url;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -189,7 +192,7 @@ class SiteController extends Controller
             if ($model->validate())
             {
                 $model->writeOffer();
-                Yii::$app->getResponse()->redirect(\yii\helpers\Url::to(['site/offer']));
+                Yii::$app->getResponse()->redirect(Url::to(['site/offer']));
 
                 
             }
@@ -224,6 +227,47 @@ class SiteController extends Controller
 
 
         return $this->render('json', compact('id', 'post'));
+    }
+
+    public function actionSummaryjson(){
+
+        $id = \Yii::$app->request->get('id');
+        $summary = Summary::findOne($id);
+        
+        $summary->delete();
+
+        if(empty($summary)) throw new HttpException(404, 'Такой страницы нет.');
+        
+
+        return $this->render('summaryjson', compact('id', 'summary'));
+
+
+        
+    }
+
+
+
+
+    public function actionSummary(){
+        
+        $summaries = Summary::find()->all();
+        $model = new SummaryForm();
+
+        if (isset($_POST['SummaryForm']))
+        {
+            $model->attributes= Yii::$app->request->post('SummaryForm');
+
+            if ($model->validate())
+            {
+                $model->writeSummary();
+                Yii::$app->getResponse()->redirect(Url::to(['site/summary']));
+            
+            }
+        }
+        
+        
+        return $this->render('summary', compact('model', 'summaries'));
+        
     }
 
 }
