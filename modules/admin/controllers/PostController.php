@@ -65,14 +65,9 @@ class PostController extends Controller
 
     public function actionIndex()
     {
-        $redirectUrl = '/web/';
+       
         $redirectUrlUploaded = '/web/admin/post/uploaded';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
-
-        ///////////////
+      
         $model = new models\UploadForm();
 
         if (Yii::$app->request->isPost) {
@@ -84,7 +79,7 @@ class PostController extends Controller
 
             }
         }
-        ////////////////
+    
 
         $searchModel = new PostSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -103,11 +98,6 @@ class PostController extends Controller
      */
     public function actionView($id)
     {
-        $redirectUrl = '/web/';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -120,11 +110,7 @@ class PostController extends Controller
      */
     public function actionCreate()
     {
-        $redirectUrl = '/web/';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
+       
         $model = new Post();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -140,11 +126,7 @@ class PostController extends Controller
 
     public function actionUpdate($id)
     {
-        $redirectUrl = '/web/';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
+       
 
         $model = $this->findModel($id);
 
@@ -167,11 +149,7 @@ class PostController extends Controller
      */
     public function actionDelete($id)
     {
-        $redirectUrl = '/web/';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
+        
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -186,11 +164,7 @@ class PostController extends Controller
      */
     protected function findModel($id)
     {
-        $redirectUrl = '/web/';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
+      
         if (($model = Post::findOne($id)) !== null) {
             return $model;
         } else {

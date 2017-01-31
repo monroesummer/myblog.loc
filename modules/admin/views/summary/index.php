@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'merit',
             [
                 'attribute' => 'status',
-                'value' => function ($data) { return ($data->status==1)?'Опубликован':'Черновик'; }
+                'value' => function ($data) { return ($data->status==1)?'Активен':'Неактивен'; }
             ],
 
             ['class' => 'yii\grid\ActionColumn'],

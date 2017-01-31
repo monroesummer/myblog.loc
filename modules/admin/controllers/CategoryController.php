@@ -35,11 +35,7 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        $redirectUrl = '/web/';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
+       
 
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -56,11 +52,7 @@ class CategoryController extends Controller
      */
     public function actionView($id)
     {
-        $redirectUrl = '/web/';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
+        
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -73,11 +65,7 @@ class CategoryController extends Controller
      */
     public function actionCreate()
     {
-        $redirectUrl = '/web/';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
+        
         
         $model = new Category();
 
@@ -99,11 +87,7 @@ class CategoryController extends Controller
     public function actionUpdate($id)
     {
 
-        $redirectUrl = '/web/';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
+       
         
         $model = $this->findModel($id);
 
@@ -124,12 +108,7 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
-        $redirectUrl = '/web/';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
-        
+       
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -144,12 +123,7 @@ class CategoryController extends Controller
      */
     protected function findModel($id)
     {
-        $redirectUrl = '/web/';
-        if (Yii::$app->user->isGuest)
-        {
-            return Yii::$app->getResponse()->redirect($redirectUrl);
-        }
-        
+      
         if (($model = Category::findOne($id)) !== null) {
             return $model;
         } else {

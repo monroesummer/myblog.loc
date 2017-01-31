@@ -1,8 +1,9 @@
 <?php
 use yii\widgets\ActiveForm;;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\bootstrap\Alert;
+use yii\jui\DatePicker;
+
 $this->title = 'Отправка';
 $this->params['breadcrumbs'][] = ['label' => 'Резюме', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -62,7 +63,16 @@ if (empty($array)) echo
 
                     <?= $form->field($model, 'patronymic')->textInput(['maxlength' => true]) ?>
 
-                    <?= $form->field($model, 'dob')->textInput() ?>
+                    <?= $form->field($model, 'dob')->widget(DatePicker::classname(), [
+                        'options' => ['class' => 'form-control input-sm','readOnly'=>'readOnly'],
+                        'language' => 'ru-Ru',
+                        'dateFormat' => 'yy.MM.dd',
+                        'clientOptions' => [
+                            'yearRange' => '1956:2016',
+                            'changeMonth' => 'true',
+                            'changeYear' => 'true',
+                            'firstDay' => '1',]
+                    ]) ?>
 
                     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
@@ -83,8 +93,8 @@ if (empty($array)) echo
                     <?= $form->field($model, 'merit')->textInput(['maxlength' => true]) ?>
 
                     <?= $form->field($model, 'status')->dropDownList([
-                        //'0' => 'Черновик',
-                        '1' => 'Опубликован'
+                        //'0' => 'Неактивен',
+                        '1' => 'Активен'
                     ]) ?>
                     <?= Html::a('Назад', ['post/index'], ['class'=>'btn btn-danger btn-lg']) ?>
                     <button type="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-bookmark"></span> Продолжить</button>

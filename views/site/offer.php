@@ -45,9 +45,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="col-md-4">
                 <div class="panel panel-success">
-                    <div class="panel-heading">
-                    <h2>Сгенерировать Json:</h2>
-                        <ul class="list-group">
+                    <div class="panel-heading">Сгенерировать Json: </div>
+                    <div class="panel-body">
+                        <p><span class ="glyphicon glyphicon-info-sign"></span> Нажав на одну из ссылок, вы сможете сгенерировать JSON файл, а так же скачать его.</p>
+                    </div>
+                    <ul class="list-group">
                             <?php foreach ($posts as $post): ?>
                                 <a href="<?=\yii\helpers\Url::to(['site/json', 'id'=> $post->id])?>">
                                     <small>
@@ -64,14 +66,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </small>
                                 </a>
                             <?php endforeach; ?>
-                        </ul>
+                    </ul>
 
-                    </div>
                 </div>
         </div>
-
     </div>
 </div>
+
 
 
 

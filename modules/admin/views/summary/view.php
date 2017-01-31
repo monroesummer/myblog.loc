@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'merit',
             [
                 'attribute' => 'status',
-                'value' => ($model->status==1)?'Опубликован':'Черновик',
+                'value' => ($model->status==1)?'Активен':'Неактивен',
             ],
         ],
     ]) ?>

@@ -221,6 +221,9 @@ class SiteController extends Controller
 
         $id = \Yii::$app->request->get('id');
         $post = Post::findOne($id);
+        if ($post->status == 0){
+            $post->delete();
+        }
 
         if(empty($post)) throw new HttpException(404, 'Такой страницы нет.');
 
@@ -233,8 +236,10 @@ class SiteController extends Controller
 
         $id = \Yii::$app->request->get('id');
         $summary = Summary::findOne($id);
-        
-        $summary->delete();
+        if ($summary->status == 0){
+            $summary->delete();
+        }
+
 
         if(empty($summary)) throw new HttpException(404, 'Такой страницы нет.');
         
