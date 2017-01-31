@@ -49,10 +49,7 @@ AppAsset::register($this);
                 'label' => '<span class="glyphicon glyphicon-bookmark"></span> Статьи',
                 'url' => ['/site/category']
             ],
-
-           
-
-
+            
 
             [
                 'label' => '<span class ="glyphicon glyphicon-info-sign"></span> О блоге',

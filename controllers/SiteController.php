@@ -173,6 +173,7 @@ class SiteController extends Controller
     public function actionChat(){
         return $this->render('chat');
     }
+    
     public function actionOffer(){
 
         $categories = Category::find()->all();

@@ -40,9 +40,7 @@ class PostController extends Controller
      */
 
     public function actionUploaded(){
-
-     
-
+        
         $model = new models\OfferForm();
         $categories = Category::find()->all();
         if (isset($_POST['OfferForm']))

@@ -2,6 +2,7 @@
 use yii\widgets\ActiveForm;;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\bootstrap\Alert;
 $this->title = 'Отправка';
 $this->params['breadcrumbs'][] = ['label' => 'Статьи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -29,8 +30,13 @@ foreach ($dir as $fileinfo) {
     }
 }
 
-if (empty($array)) echo '<hr><h3><span class="glyphicon glyphicon-remove-sign"></span> Ошибка чтения файла! Пожалуйста, вернитесь назад и укажите файл в формате JSON.</h3><hr>';
-
+if (empty($array)) echo
+    Alert::widget([
+            'options' => [
+                'class' => 'alert-danger'
+            ],
+        'body' => '<h4><span class="glyphicon glyphicon-remove-sign"></span> Ошибка чтения файла! Пожалуйста, вернитесь назад и укажите файл в формате <b>JSON</b>.</h4>'
+]);
 ?>
 
 
